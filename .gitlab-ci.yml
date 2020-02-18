@@ -7,5 +7,6 @@ variables:
 build backend:
   stage: build
   image: alpine:latest
+  tags: [default]
   script:
     - echo "Bonjour ${ENV}"
