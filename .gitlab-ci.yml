@@ -1,0 +1,11 @@
+stages:
+    - build
+
+
+variables:
+    ENV: "dev"
+build backend:
+  stage: build
+  image: alpine:latest
+  script:
+    - echo "Bonjour ${ENV}"
