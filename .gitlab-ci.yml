@@ -6,7 +6,7 @@ variables:
     ENV: "dev"
 build backend:
   stage: build
-  image: alpine:latest
+#  image: alpine:latest
   tags: [docker]
   script:
     - echo "Bonjour ${ENV}"
