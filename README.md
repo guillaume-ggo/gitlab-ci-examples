@@ -1,2 +1,1 @@
-# first-project
-
+# gitlab-ci-examples
