@@ -9,7 +9,7 @@ variables:
 
 .printinfo: &printinfo
     - echo "Bonjour depuis ${ENV}, il est $(date)"
-    - echo "Nous sommes dans l'étape '${CI_JOB_STAGE}' et dans le '${CI_JOB_NAME}'"
+    - echo "Nous sommes dans l'étape '${CI_JOB_STAGE}' et dans le job '${CI_JOB_NAME}'"
 
 before_script:
   - echo "Avant tous les autres jobs"
@@ -58,6 +58,6 @@ test:artifact:
   script:
     - *printinfo
     - ls -la
-    - \[\[ -f simple.gz \]\] \&\& gzip -t simplepackage.gz \&\& gzip -l simplepackage.gz \&\& echo "Artifact is generated"
+    - \[\[ -f simplepackage.gz \]\] \&\& gzip -t simplepackage.gz \&\& gzip -l simplepackage.gz \&\& echo "Artifact is generated"
   dependencies:
     - package:gz
