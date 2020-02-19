@@ -44,7 +44,7 @@ build:js:
 package:gz:
   stage: package
   variables:
-    - ENV: "dev2"
+    ENV: "dev2"
   tags: [docker]
   script:
     - *printinfo
