@@ -43,6 +43,8 @@ build:js:
 
 package:gz:
   stage: package
+  variables:
+    - ENV: "dev2"
   tags: [docker]
   script:
     - *printinfo
@@ -53,11 +55,14 @@ package:gz:
     expire_in: 1 hour
 
 test:artifact:
+  # Enable debug
+  variables:
+    CI_DEBUG_TRACE: "true"
   stage: test
   tags: [docker]
   script:
     - *printinfo
     - ls -la
-    - '[[ -f simplepackage.gz ]] && gzip -t simplepackage.gz && echo "Artifact is generated on ${DEV}"'
+    - '[[ -f simplepackage.gz ]] && gzip -t simplepackage.gz && echo "Artifact is generated on ${ENV}"'
   dependencies:
     - package:gz
