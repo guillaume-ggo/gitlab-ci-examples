@@ -19,7 +19,7 @@ after_script:
   - echo "Après tous les autres jobs"
   - echo "Il est $(date)"
 
-build java:
+build:java:
   stage: build
   tags: [docker]
   before_script:
@@ -34,14 +34,14 @@ build java:
     - printenv
     - echo "Run build java"
     
-buildjs:
+build:js:
   stage: build
   tags: [docker]
   script:
     - *printinfo
     - echo "Run build js"
 
-package gz:
+package:gz:
   stage: package
   tags: [docker]
   script:
@@ -52,13 +52,12 @@ package gz:
       - simplepackage.gz
     expire_in: 1 hour
 
-test artifact:
+test:artifact:
   stage: test
   tags: [docker]
-  dependencies:
-    - package gz
   script:
     - *printinfo
     - ls -la
-    - [[ -f simple.gz ]] && gzip -t simplepackage.gz && gzip -l simplepackage.gz && echo "Artifact is generated"
-    
+    - \[\[ -f simple.gz \]\] \&\& gzip -t simplepackage.gz \&\& gzip -l simplepackage.gz \&\& echo "Artifact is generated"
+  dependencies:
+    - package:gz
