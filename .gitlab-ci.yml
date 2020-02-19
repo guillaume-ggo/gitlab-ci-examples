@@ -58,6 +58,6 @@ test:artifact:
   script: #!/bin/bash
     - *printinfo
     - ls -la
-    - [[ -f simplepackage.gz ]] && gzip -t simplepackage.gz && gzip -l simplepackage.gz \&\& echo "Artifact is generated"
+    - [[ -f simplepackage.gz ]] && gzip -t simplepackage.gz && gzip -l simplepackage.gz && echo "Artifact is generated"
   dependencies:
     - package:gz
