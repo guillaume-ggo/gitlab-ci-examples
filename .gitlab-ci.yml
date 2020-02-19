@@ -6,7 +6,13 @@ variables:
     ENV: "dev"
 build backend:
   stage: build
-#  image: alpine:latest
   tags: [docker]
   script:
     - echo "Bonjour ${ENV}"
+    - echo "Répertoire courant $(pwd)"
+    - ls -la
+    - echo "Racine:"
+    - ls -la /
+    - echo "Variables d'environnements:"
+    - printenv
+    
