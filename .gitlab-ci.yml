@@ -1,14 +1,23 @@
 stages:
     - build
+    - package
 
 
 variables:
     ENV: "dev"
-build backend:
+
+before_script:
+  - echo "Avant tous les autres jobs"
+  - echo "Nous sommes dans l'étape '${CI_JOB_STAGE}' et dans le '${CI_JOB_NAME}'"
+  
+buildjava:
   stage: build
   tags: [docker]
+  before_script:
+    - echo "Nous sommes à l'étape '${CI_JOB_STAGE}' et avant le '${CI_JOB_NAME}'"
   script:
-    - echo "Bonjour ${ENV}"
+    - echo "Bonjour depuis ${ENV}, il est $(date)"
+    - echo "Nous sommes dans l'étape '${CI_JOB_STAGE}' et dans le '${CI_JOB_NAME}'"
     - echo "Répertoire courant $(pwd)"
     - ls -la
     - echo "Racine:"
@@ -16,3 +25,18 @@ build backend:
     - echo "Variables d'environnements:"
     - printenv
     
+buildjs:
+  stage: build
+  tags: [docker]
+  script:
+    - echo "Bonjour depuis ${ENV}, il est $(date)"
+    - echo "Nous sommes dans l'étape '${CI_JOB_STAGE}' et dans le '${CI_JOB_NAME}'"
+
+simplepackage:
+  stage: package
+  tags: [docker]
+  script:
+    - echo "mon simple fichier texte" > monfichier.txt | gzip > simplepackage.gz
+  artifacts:
+    paths:
+      - simplepackage.gz
