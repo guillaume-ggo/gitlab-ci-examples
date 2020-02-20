@@ -52,6 +52,7 @@ build:js:
 package:gz:
   stage: package
   variables:
+    GIT_STRATEGY: none
     ENV: "dev2"
   tags: [docker]
   script:
@@ -65,7 +66,8 @@ package:gz:
 test:artifact:
   # Enable debug
   variables:
-    CI_DEBUG_TRACE: "true"
+    GIT_STRATEGY: none
+#    CI_DEBUG_TRACE: "true"
   stage: test
   tags: [docker]
   script:
