@@ -36,7 +36,7 @@ build:java:
     - javac backend/src/main/java/Application.java
   only:
     changes:
-      - backend/**
+      - backend/**/*.{java,xml}
 
 build:js:
   stage: build
@@ -46,7 +46,7 @@ build:js:
     - echo "Run build js"
   only:
     changes:
-      - frontend/**
+      - frontend/**/*.js
 
 package:gz:
   stage: package
