@@ -33,13 +33,20 @@ build:java:
     - echo "Variables d'environnements:"
     - printenv
     - echo "Run build java"
-    
+    - javac backend/src/main/java/Application.java
+  only:
+    changes:
+      - backend/**
+
 build:js:
   stage: build
   tags: [docker]
   script:
     - *printinfo
     - echo "Run build js"
+  only:
+    changes:
+      - frontend/**
 
 package:gz:
   stage: package
