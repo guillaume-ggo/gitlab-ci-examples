@@ -22,6 +22,7 @@ after_script:
 build:java:
   stage: build
   tags: [docker]
+  image: openjdk:8
   before_script:
     - echo "Nous sommes à l'étape '${CI_JOB_STAGE}' et avant le '${CI_JOB_NAME}'"
   script:
