@@ -1,3 +1,11 @@
+# Exemple de pipeline Gitlab CI
+#
+# Trois étapes:
+#
+#   build: lance deux jobs en parallèle
+#   package: une tâche également lancée en même tant que build mais n'ayant pas besoin de récupérer le dépôt GIT
+#   test: Lancée après l'exécution de package et n'yant pas non plus besoin de récupérer le dépôt GIT
+#
 stages:
     - build
     - package
